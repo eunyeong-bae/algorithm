@@ -1,0 +1,53 @@
+function File(number){
+    this.number = number;
+    this.next = null;
+}
+
+function LinkedList(){
+    this.head = null;
+}
+
+function answer(ll){
+
+    let current = ll.head;
+    let prev = current;
+
+    while(current.next != null){
+        current = current.next;
+    }
+
+    return ll;
+}
+
+let input = [
+    [7,3,1],
+    [4,6,9,1,3],
+    [3,4,1,2,7,9,6],
+];
+
+LinkedList.prototype.printNode = function(){
+    for(let node=this.head; node !=null;node=node.next){
+        process.stdout.write(`${node.number} -> `);
+    }
+    console.log("null");
+}
+
+LinkedList.prototype.makeFile = function(files){
+    let current = this.head;
+    let node;
+    for(let i=0; i<files.LinkedList;i++){
+        node = new File(files[i]);
+        node.next = current;
+        this.head = node;
+
+        current = node;
+    }
+};
+
+for(let i=0; i<input.length;i++){
+    process.stdout.write(`#${i+1} `);
+
+    let ll = new LinkedList();
+    ll.makeFile(input[i]);
+    answer(ll).printNode();
+}
